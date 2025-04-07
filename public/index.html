@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Property Technology | Bærekraftige Løsninger for Eiendom</title>
+    <style>
+        :root {
+            --primary: #2e7d32;
+            --secondary: #1b5e20;
+            --accent: #4caf50;
+            --light: #e8f5e9;
+            --dark: #1a1a1a;
+            --grey: #f5f5f5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3 {
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        a:hover {
+            color: var(--accent);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+            text-transform: uppercase;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            margin-right: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            font-weight: 500;
+        }
+        
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/api/placeholder/1200/800');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            margin-top: 70px;
+        }
+        
+        .hero-content {
+            max-width: 700px;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* Hero Cards */
+        .hero-cards {
+            padding: 5rem 0;
+            background-color: var(--grey);
+        }
+        
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .card-content h3 {
+            color: var(--primary);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 5rem 0;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 5rem 0;
+            background-color: var(--light);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .contact-icon {
+            color: var(--primary);
+            font-size: 1.5rem;
+            min-width: 30px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-col h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-links a {
+            color: white;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            opacity: 0.7;
+        }
+        
+
+        .logo img {
+            height: 40px; /* Adjust this value as needed */
+            display: block;
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background-color: white;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+                transform: translateY(-150%);
+                transition: transform 0.3s;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-grid, .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <img src="./images/logo.png" alt="Green Property Technology Logo" height="40">
+                </a>
+                <div class="menu-toggle">&#9776;</div>
+                <ul class="nav-links">
+                    <li><a href="#hero">Hjem</a></li>
+                    <li><a href="#hero-cards">Tjenester</a></li>
+                    <li><a href="#about">Om Oss</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Smarte, Grønne Eiendomsløsninger</h1>
+                <p>Vi leverer bærekraftige teknologiløsninger for eiendomsbransjen over hele Norge, med utspring fra vakre Kristiansand.</p>
+                <a href="#contact" class="btn">Kontakt Oss</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hero Cards -->
+    <section class="hero-cards" id="hero-cards">
+        <div class="container">
+            <h2>Våre Tjenester</h2>
+            <p>Utforsk våre innovative løsninger for eiendomsbransjen.</p>
+            
+            <div class="card-container">
+                <div class="card">
+                    <img src="/api/placeholder/600/400" alt="Smarte Bygningsløsninger" class="card-img">
+                    <div class="card-content">
+                        <h3>Smarte Bygningsløsninger</h3>
+                        <p>Automatiserte systemer for energieffektivisering, sikkerhet og komfort i moderne bygninger.</p>
+                        <a href="#" class="btn">Les Mer</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <img src="/api/placeholder/600/400" alt="Bærekraftig Forvaltning" class="card-img">
+                    <div class="card-content">
+                        <h3>Bærekraftig Forvaltning</h3>
+                        <p>Systemer for optimal eiendomsforvaltning med fokus på miljøvennlige løsninger og kostnadseffektivitet.</p>
+                        <a href="#" class="btn">Les Mer</a>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <img src="/api/placeholder/600/400" alt="Energioptimalisering" class="card-img">
+                    <div class="card-content">
+                        <h3>Energioptimalisering</h3>
+                        <p>Rådgivning og implementering av løsninger for å redusere energiforbruk og klimaavtrykk.</p>
+                        <a href="#" class="btn">Les Mer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2>Om Oss</h2>
+            
+            <div class="about-grid">
+                <div>
+                    <p>Green Property Technology ble grunnlagt i Kristiansand med en visjon om å revolusjonere eiendomsbransjen gjennom innovative, bærekraftige teknologiløsninger.</p>
+                    
+                    <p>Med over 10 års erfaring i bransjen, har vi utviklet et bredt spekter av tjenester som hjelper eiendomsbesittere, utviklere og forvaltere over hele Norge å optimalisere sine eiendommer for fremtiden.</p>
+                    
+                    <p>Vår ekspertise spenner fra energioptimalisering og smarte bygningssystemer til bærekraftig eiendomsforvaltning. Vi tror på å kombinere det beste av norsk teknologi med miljøbevisste løsninger for å skape merverdi for våre kunder og samfunnet.</p>
+                    
+                    <p>Med hovedkontor i Kristiansand og partnere over hele landet, er vi alltid tilgjengelige for å levere skreddersydde løsninger uansett hvor i Norge du befinner deg.</p>
+                </div>
+                
+                <img src="/api/placeholder/800/600" alt="Green Property Technology Team" class="about-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Kontakt Oss</h2>
+            <p>Vi er her for å hjelpe deg med alle dine spørsmål om grønne eiendomsløsninger.</p>
+            
+            <div class="contact-grid">
+                <form class="contact-form">
+                    <input type="text" placeholder="Navn" required>
+                    <input type="email" placeholder="E-post" required>
+                    <input type="tel" placeholder="Telefon">
+                    <textarea placeholder="Din melding" required></textarea>
+                    <button type="submit" class="btn">Send Melding</button>
+                </form>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <h3>Besøk Oss</h3>
+                            <p>Markensgate 10<br>4611 Kristiansand<br>Norge</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <h3>Ring Oss</h3>
+                            <p>+47 400 00 000</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div>
+                            <h3>E-post</h3>
+                            <p>kontakt@greenproptech.no</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">🕒</div>
+                        <div>
+                            <h3>Åpningstider</h3>
+                            <p>Mandag - Fredag: 08:00 - 16:00<br>Lørdag - Søndag: Stengt</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>Green Property Technology</h3>
+                    <p>Innovative og bærekraftige løsninger for eiendomsbransjen i hele Norge.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Tjenester</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Smarte Bygningsløsninger</a></li>
+                        <li><a href="#">Bærekraftig Forvaltning</a></li>
+                        <li><a href="#">Energioptimalisering</a></li>
+                        <li><a href="#">Rådgivning</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Lenker</h3>
+                    <ul class="footer-links">
+                        <li><a href="#hero">Hjem</a></li>
+                        <li><a href="#hero-cards">Tjenester</a></li>
+                        <li><a href="#about">Om Oss</a></li>
+                        <li><a href="#contact">Kontakt</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Green Property Technology. Alle rettigheter reservert.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript for mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+            
+            // Close mobile menu when clicking on a link
+            const links = document.querySelectorAll('.nav-links a');
+            links.forEach(link => {
+                link.addEventListener('click', function() {
+                    navLinks.classList.remove('active');
+                });
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 70,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
